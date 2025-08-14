@@ -116,7 +116,7 @@ struct TransferView: View {
                         self.eventManager.events = newEvents
                         self.instanceManager.instances = newInstances
                         self.errorText = nil
-                        self.infoText = "Заменено всё: типов \(incomingE), мероприятий \(incomingI)"
+                        self.infoText = "Заменено всё: клубов \(incomingE), мероприятий \(incomingI)"
                     }
 
                 case .addAsNew:
@@ -138,7 +138,7 @@ struct TransferView: View {
                         self.eventManager.events.append(contentsOf: newEvents)
                         self.instanceManager.instances.append(contentsOf: newInstances)
                         self.errorText = nil
-                        self.infoText = "Добавлено как новые: типов +\(addedE), мероприятий +\(addedI)"
+                        self.infoText = "Добавлено как новые: клубов +\(addedE), мероприятий +\(addedI)"
                     }
 
                 case .merge:
@@ -163,7 +163,7 @@ struct TransferView: View {
                         self.eventManager.events = mergedEvents
                         self.instanceManager.instances = mergedInstances
                         self.errorText = nil
-                        self.infoText = "Слито по ID: добавлено типов +\(addedE), обновлено \(updatedE); мероприятий +\(addedI), обновлено \(updatedI)"
+                        self.infoText = "Слито по ID: добавлено клубов +\(addedE), обновлено \(updatedE); мероприятий +\(addedI), обновлено \(updatedI)"
                     }
                 }
 

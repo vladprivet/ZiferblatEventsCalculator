@@ -5,7 +5,7 @@ struct TotalsView: View {
     let totalCurDebt: Double
 
     var body: some View {
-        Section(header: Text("Итого долги")) {
+        Section(header: Text("Долги")) {
             DebtRow(label: "Организаторам", amount: totalOrgDebt)
             DebtRow(label: "Кураторам", amount: totalCurDebt)
             if totalOrgDebt == 0 && totalCurDebt == 0 {

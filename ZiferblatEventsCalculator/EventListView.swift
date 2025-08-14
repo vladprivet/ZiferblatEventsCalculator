@@ -12,9 +12,9 @@ struct EventListView: View {
             Section {
                 if eventManager.events.isEmpty {
                     ContentUnavailableView(
-                        "Нет типов мероприятий",
+                        "Нет клубов",
                         systemImage: "calendar.badge.plus",
-                        description: Text("Нажми «Добавить» вверху, чтобы создать первый тип.")
+                        description: Text("Нажми «Добавить» вверху, чтобы создать клуб.")
                     )
                 } else {
                     ForEach(eventManager.events, id: \.id) { event in
@@ -44,7 +44,7 @@ struct EventListView: View {
                 }
             }
         }
-        .navigationTitle("Типы мероприятий")
+        .navigationTitle("Клубы")
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 EditButton()
@@ -65,7 +65,7 @@ struct EventListView: View {
                 showDeleteConfirm = true
             }
         }
-        .confirmationDialog("Удалить тип?", isPresented: $showDeleteConfirm, titleVisibility: .visible) {
+        .confirmationDialog("Удалить клуб?", isPresented: $showDeleteConfirm, titleVisibility: .visible) {
             Button("Удалить", role: .destructive) {
                 if let id = pendingDeleteID {
                     eventManager.remove(id: id)
@@ -160,7 +160,7 @@ private struct AddEventView: View {
                     .disabled(!canSave)
             }
         }
-        .navigationTitle("Новый тип")
+        .navigationTitle("Новый клуб")
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Отмена") { dismiss() }
@@ -238,9 +238,8 @@ private struct EditEventSheet: View {
                 }
                 Section {
                     Button("Сохранить изменения") { save() }
-                        .buttonStyle(.borderedProminent)
 
-                    Button("Удалить тип", role: .destructive) {
+                    Button("Удалить клуб", role: .destructive) {
                         onDelete(event.id)
                         dismiss()
                     }

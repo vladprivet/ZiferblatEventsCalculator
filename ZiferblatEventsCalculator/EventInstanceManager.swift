@@ -27,7 +27,7 @@ final class EventInstanceManager: ObservableObject {
 
     // MARK: - CSV
     func exportToCSV() -> URL? {
-        let header = "Дата,Название,Куратор,Людей,Сумма,Орг всего,Кур всего,Орг выплачено,Кур выплачено,Орг выплачен,Кур выплачен"
+        let header = "Дата,Название,Куратор,Гостей,Сумма,Орг всего,Кур всего,Орг выплачено,Кур выплачено,Орг выплачен,Кур выплачен"
         let rows = instances.map { instance in
             [
                 instance.date.formatted(date: .numeric, time: .omitted),

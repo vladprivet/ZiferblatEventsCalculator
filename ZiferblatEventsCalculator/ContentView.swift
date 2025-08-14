@@ -55,12 +55,12 @@ struct ContentView: View {
     // MARK: - Sections
 
     private var eventPickerSection: some View {
-        Section(header: Text("Тип мероприятия")) {
+        Section(header: Text("Клуб")) {
             if eventManager.events.isEmpty {
-                Text("Нет доступных типов. Добавь в «Управление типами».")
+                Text("Нет доступных клубов. Добавь в \"Управление клубами\".")
                     .foregroundColor(.secondary)
             } else {
-                Picker("Выбери мероприятие", selection: $selectedEventID) {
+                Picker("Выбери клуб", selection: $selectedEventID) {
                     ForEach(eventManager.events.map { ($0.id, $0.eventName) }, id: \.0) { (id, name) in
                         Text(name).tag(Optional(id))
                     }
@@ -78,7 +78,7 @@ struct ContentView: View {
                     .keyboardType(.decimalPad)
             }
 
-            LabeledContent("Кол-во людей") {
+            LabeledContent("Кол-во гостей") {
                 TextField("например 12", text: $numOfPeopleText)
                     .keyboardType(.numberPad)
             }
@@ -87,7 +87,7 @@ struct ContentView: View {
 
     private var createButtonSection: some View {
         Section {
-            Button("Создать EventInstance") { createInstance() }
+            Button("Создать мероприятие") { createInstance() }
                 .disabled(selectedEventID == nil || moneyText.isEmpty || numOfPeopleText.isEmpty)
         }
     }
@@ -104,7 +104,7 @@ struct ContentView: View {
 
     private var navigationSection: some View {
         Section(header: Text("Навигация")) {
-            NavigationLink("Управление типами", destination: EventListView(eventManager: eventManager))
+            NavigationLink("Управление клубами", destination: EventListView(eventManager: eventManager))
 
             NavigationLink("Список мероприятий") {
                 EventInstanceListView(
@@ -140,7 +140,7 @@ struct ContentView: View {
 
                     TextField("Сумма", text: $editMoney, prompt: Text("например 150.00"))
                         .keyboardType(.decimalPad)
-                    TextField("Людей", text: $editPeople, prompt: Text("например 12"))
+                    TextField("Гостей", text: $editPeople, prompt: Text("например 12"))
                         .keyboardType(.numberPad)
                 }
 

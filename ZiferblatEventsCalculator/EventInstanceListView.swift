@@ -38,9 +38,9 @@ struct EventInstanceListView: View {
                             .font(.headline)
                         Text("Гостей: \(instance.numberOfPeople), Сумма: \(instance.instanceMoney, specifier: "%.2f")")
                             .font(.subheadline)
-                        Text("Орг: \(instance.orgPaidAmount, specifier: "%.2f") / \(instance.instanceOrgFee, specifier: "%.2f") \(instance.isOrgFullyPaid ? "✅" : "⌛️")")
+                        Text("Орг: \(instance.orgPaidAmount, specifier: "%.2f") / \(instance.instanceOrgFee, specifier: "%.2f") \(instance.isOrgFullyPaid ? "✓" : "✗")")
                             .font(.caption)
-                        Text("Кур: \(instance.curPaidAmount, specifier: "%.2f") / \(instance.instanceCurFee, specifier: "%.2f") \(instance.isCurFullyPaid ? "✅" : "⌛️")")
+                        Text("Кур: \(instance.curPaidAmount, specifier: "%.2f") / \(instance.instanceCurFee, specifier: "%.2f") \(instance.isCurFullyPaid ? "✓" : "✗")")
                             .font(.caption)
                             .foregroundColor(.gray)
                     }

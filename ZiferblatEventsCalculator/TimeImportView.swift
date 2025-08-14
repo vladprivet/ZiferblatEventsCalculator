@@ -40,12 +40,12 @@ struct TimeImportView: View {
     // MARK: - Sections
 
     private var eventPickerSection: some View {
-        Section(header: Text("Тип мероприятия")) {
+        Section(header: Text("Клуб")) {
             if eventManager.events.isEmpty {
-                Text("Сначала добавьте тип мероприятия в “Управление типами”.")
+                Text("Сначала добавь клуб в \"Управлении клубами\".")
                     .foregroundColor(.secondary)
             } else {
-                Picker("Выбери мероприятие", selection: $selectedEventID) {
+                Picker("Выбери клуб", selection: $selectedEventID) {
                     ForEach(eventManager.events.map { ($0.id, $0.eventName) }, id: \.0) { (id, name) in
                         Text(name).tag(Optional(id))
                     }
@@ -109,7 +109,7 @@ struct TimeImportView: View {
 
     private var resultSection: some View {
         Section(header: Text("Результат")) {
-            HStack { Text("Участников"); Spacer(); Text("\(peopleCount)") }
+            HStack { Text("Гостей"); Spacer(); Text("\(peopleCount)") }
             HStack { Text("Сумма минут"); Spacer(); Text("\(totalMinutes)") }
             HStack { Text("Выручка"); Spacer(); Text("\(previewMoney, specifier: "%.2f")") }
             if let inst = previewInstance {
@@ -124,7 +124,7 @@ struct TimeImportView: View {
 
     private var actionsSection: some View {
         Section {
-            Button("Создать EventInstance") {
+            Button("Создать мероприятие") {
                 createInstanceFromPreview()
             }
             .disabled(previewInstance == nil)
@@ -203,7 +203,7 @@ struct TimeImportView: View {
     private func exportOneCSVRow() {
         guard let inst = previewInstance else { return }
 
-        let header = "Дата,Название,Куратор,Людей,Сумма,Орг,Кур"
+        let header = "Дата,Название,Куратор,Гостей,Сумма,Орг,Кур"
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
 
