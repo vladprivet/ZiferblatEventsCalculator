@@ -42,7 +42,7 @@ struct ContentView: View {
                 createButtonSection
 
                 // ⬇️ Новая секция с итогами долгов
-                totalsSection
+                TotalsView(totalOrgDebt: totalOrgDebt, totalCurDebt: totalCurDebt)
 
                 exportSection
                 navigationSection
@@ -89,29 +89,6 @@ struct ContentView: View {
         Section {
             Button("Создать EventInstance") { createInstance() }
                 .disabled(selectedEventID == nil || moneyText.isEmpty || numOfPeopleText.isEmpty)
-        }
-    }
-
-    // NEW: totals
-    private var totalsSection: some View {
-        Section(header: Text("Итого долги")) {
-            HStack {
-                Text("Организаторам")
-                Spacer()
-                Text("\(totalOrgDebt, specifier: "%.2f")")
-                    .monospacedDigit()
-            }
-            HStack {
-                Text("Кураторам")
-                Spacer()
-                Text("\(totalCurDebt, specifier: "%.2f")")
-                    .monospacedDigit()
-            }
-            if totalOrgDebt == 0 && totalCurDebt == 0 {
-                Text("Долгов нет 🎉")
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-            }
         }
     }
 
